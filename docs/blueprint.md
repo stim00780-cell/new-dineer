@@ -1,0 +1,100 @@
+# **App Name**: Dinner O'Clock
+
+## Core Features:
+
+- Homepage Carousel: Automatically rotating carousel displaying enticing food images with links to the Menu page.
+- Multilingual Support: Language toggle enabling users to switch between Dutch and English.
+- Menu Display: Interactive menu page with category filters (Breakfast, Lunch, Dinner) and detailed item information (name, description, price, image).
+- Plan Selection: Flexible plan options (Prepaid/Postpaid) with discounts, and customizable packages for events. User interface provides access to Stripe's payment processing
+- User Authentication: Secure login/signup with password reset functionality, including user profile management and order history.
+- Postpaid Application: System for users to apply for postpaid service by submitting required documents, including admin approval workflow.
+- Secure Admin Panel: Restricted-access admin panel for managing menu items, plans, users, and content, and for handling messages, notifications and settings, with granular API control and auto-task options, secured via layered authentication and activity logs.
+- Homepage Carousel - Auto image slider: Meal photos + call-to-action buttons
+- Multilingual Support (EN/NL): Language toggle button; all text changes instantly (LibreTranslate self-hosted).
+- Menu Page (Dynamic): Category filters (Breakfast, Lunch, Dinner); Food item details (name, description, image, price); “Add to Cart” button (non-functional for demo).
+- Meal Plan Page: View subscription plans (Weekly, Monthly, Custom); Choose Prepaid/Postpaid; Plan detail modal with “Subscribe” option.
+- Checkout (Demo): Show Stripe integration page (mock payment success message).
+- User Authentication: Login / Signup / Logout; Password reset via email (Firebase Auth).
+- User Profile Page: View/update info (name, phone, address, image); Order history (demo entries).
+- Postpaid Application Form: Upload ID proof (PDF/image) → “Pending Approval” status.
+- Contact Page: Send message (stores in Firebase / admin inbox).
+- About Us Page: Info about brand, team, and mission.
+- Terms, Privacy, Refund Policy Pages: Legal pages with sample text.
+- Notification Popup System: Toasts or small alerts (“Order Confirmed!”, “Message Sent”, etc.)
+- Search Bar: Search menu items by name.
+- Responsive Design: Fully mobile-friendly layout.
+- Admin Login (Separate Access): Layered authentication with username/password.
+- Dashboard Overview: User count, orders, plans, messages (demo stats).
+- Menu Management: Add/Edit/Delete meals (with name, description, price, image).
+- Plan Management: Create and modify subscription plans.
+- User Management: View user list, approve postpaid applications.
+- Message Inbox: View user messages and reply.
+- Notification Manager: Send custom notifications to users.
+- API Settings Page: Add/edit keys for Stripe, Brevo, Translate; Toggle integration on/off.
+- Auto Tasks Section: Auto email reminder toggle; Auto order confirmation toggle.
+- Page Editor: Edit text/images on frontend pages from admin panel (CMS-style).
+- Security Logs: Track all admin activity (e.g., added menu item, edited plan).
+- Theme Settings: Change site colors, logo, and typography.
+- Feature Control: Turn ON/OFF referral system, auto translate, or loyalty points.
+- Data Backup Button (Demo): “Backup Now” button for simulation.
+- Stripe: Payment processing for prepaid plans (Demo mode).
+- LibreTranslate (Self-hosted): Free translation (EN ↔ NL) without API key.
+- Firebase Authentication: Login/signup/reset password.
+- Firebase Firestore (Optional): Store user, order, and menu data.
+- Brevo (Optional): Email marketing & newsletters.
+- Google Maps Embed: Business location in About page.
+- Hostinger/Netlify Hosting: Live deploy (Frontend + backend if possible).
+- SSL (HTTPS): Secure connection.
+- Auto welcome email after signup.: Auto message: “Your postpaid request has been received.”
+- Auto language translation trigger when page loads.: Auto notification: “Your meal plan is expiring soon.”
+- Daily summary in admin dashboard (“5 new users today”).: TBD.
+- 404 Page: (Custom “Page Not Found”).
+- FAQ Page: (Dynamic Q/A from Firestore or JSON).
+- Reviews Section: (Static 4–5 user reviews for demo).
+- Cookie Consent Popup: (GDPR compliance).
+- Scroll to top button: TBD.
+- Loading spinner/animation between pages: TBD.
+- Maintenance mode screen: TBD.
+- Social media links: (footer).
+- Smart Cart System: ইউজার চাইলে খাবার কার্টে যোগ করবে, পরিবর্তন করবে, অথবা বাদ দেবে; “Cart Saved” localStorage বা Firestore এ সেভ থাকবে
+- Real-time Order Tracking: অর্ডার দিলে “Preparing → On the way → Delivered” স্ট্যাটাস আপডেট; Admin panel থেকে এই স্ট্যাটাস নিয়ন্ত্রণ করা যাবে
+- Dynamic Offer Banner System: Admin চাইলে Home বা Menu পেইজে “Today’s Offer” ব্যানার আপডেট করতে পারবে
+- User Reviews & Ratings: প্রতিটি মেনু আইটেমে রেটিং (১–৫ স্টার) ও ছোট রিভিউ দেওয়া যাবে; Admin অনুমোদন দিলে তা দেখাবে
+- Favorites / Wishlist System: ইউজার “♥ Add to Favorites” করতে পারবে, পরে সহজে দেখতে পারবে
+- Responsive Order Summary Drawer: স্ক্রিনের ডানদিকে স্মার্ট স্লাইডার — যেখানে ইউজারের কার্ট, টোটাল, ডিসকাউন্ট সব দেখা যাবে
+- Delivery Zone Checker (Postal Code): ইউজার তার এলাকার পিন কোড দিয়ে চেক করতে পারবে “Delivery Available” কি না
+- Dark / Light Theme Toggle: ইউজার চাইলে নিজের পছন্দমতো থিম পরিবর্তন করতে পারবে
+- Multi-step Checkout (Demo): Step 1 → Delivery Info; Step 2 → Payment; Step 3 → Confirmation
+- Dynamic Footer Info (from Admin): Footer text, contact info, links — admin panel থেকে সরাসরি পরিবর্তনযোগ্য
+- Push Notification System (Firebase Cloud Messaging): “Your order is ready!” বা “New menu added!” — ব্রাউজারেই পপআপ নোটিফিকেশন
+- AI-based Recommendation Section (Optional): “You may also like” — ইউজারের পূর্ববর্তী অর্ডার অনুযায়ী similar item সাজেস্ট
+- Dynamic Testimonials Section: Review ডেটা থেকে automatic slider তৈরি হবে Home পেজে
+- Coupon / Promo Code System (Admin Controlled): Admin নতুন কুপন তৈরি করবে, ইউজার checkout এ ব্যবহার করবে
+- Referral System (Updated): Admin panel থেকে turn ON/OFF; Referral code = 5–10% discount (adjustable)
+- Blog / Recipe Section (for SEO): Admin নতুন Recipe / Article লিখে Publish করতে পারবে; ইউজার তা পড়তে পারবে, Share করতে পারবে
+- Email Verification System: Firebase Auth এর মাধ্যমে নতুন ইউজারের ইমেইল verify করতে হবে
+- SMS Notification Integration (Optional): Brevo বা Twilio API দিয়ে অর্ডার স্ট্যাটাস SMS এ পাঠানো
+- User Dashboard Analytics (Mini Stats): ইউজারের টোটাল অর্ডার, রিওয়ার্ড পয়েন্ট, এক্টিভ প্ল্যান ইত্যাদি দেখা যাবে
+- Favorites-based Menu Sorting: “Most Loved Dishes” — রেটিং অনুযায়ী মেনু সাজানো
+- AI Chatbot Assistant (Help / FAQ): ইউজার প্রশ্ন করলে auto suggestion / FAQ দিবে (OpenAI API বা Custom Logic)
+- Real-time Admin Chat (Customer Support): Live chat between user ↔ admin
+- Auto Plan Renewal (via Stripe Subscription): মাস শেষ হলে অটো পেমেন্ট
+- Geo-location Delivery Tracking (Google Maps): ইউজার তার Rider এর অবস্থান দেখতে পারবে
+- Multi-branch Support (If future expansion): প্রতিটি branch এর আলাদা মেনু ও অর্ডার ট্র্যাকিং
+- Analytics Dashboard (Admin side): Sales, Active users, Top dishes, etc. — সব গ্রাফ আকারে
+- Push to Mobile App (PWA / Android App): ওয়েবসাইটটিকে Progressive Web App হিসেবে সেট করা, installable app feel
+- Automatic Backup System (Firestore Export): Admin panel থেকে এক ক্লিকে data export
+- AI Auto-Translate Menu Items (Auto update): নতুন মেনু অ্যাড হলে ভাষা নিজে নিজে অনুবাদ হবে
+- In-App Notification Center (Bell icon): ইউজারের profile icon এ notification badge
+
+## Style Guidelines:
+
+- Primary color: Fresh green (#6AB04C) to evoke freshness and health.
+- Background color: Light green (#E2F0D7), subtly desaturated, to provide a calm backdrop.
+- Accent color: Warm orange (#F39C12) to highlight key CTAs and offers.
+- Headline font: 'Belleza' sans-serif for headers and short, stylish text sections.
+- Body font: 'Alegreya' serif for comfortable readability in longer descriptions and text.
+- Code font: 'Source Code Pro' for any code snippets in API configurations, displayed only in the admin panel.
+- Clean, minimalist icons for menu categories and user profile options.
+- Responsive grid layout for menu items and plans, adapting to various screen sizes with clear, intuitive navigation.
+- Subtle transitions and loading animations to enhance user experience without overwhelming the interface.
