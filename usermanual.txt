@@ -1,0 +1,188 @@
+
+# Dinner O'Clock - Complete Website Guide & User Manual
+
+## 1. Introduction
+
+Welcome to the official user manual for the Dinner O'Clock website. This document provides a comprehensive overview of the website's structure, features, and functionalities. It is designed to be a complete guide for everyone, from end-users and administrators to developers who wish to understand the technical architecture and transform this prototype into a full-fledged, real-world application.
+
+---
+
+## 2. Technical Architecture & How It Was Built
+
+This website was constructed as a modern, high-performance web application using a carefully selected stack of technologies. The goal was to create a scalable, maintainable, and feature-rich platform.
+
+### 2.1. Technologies Used
+
+*   **Framework:** **Next.js (with App Router)** - A React framework that enables server-side rendering (SSR) and static site generation (SSG). The App Router architecture allows for better code organization, improved performance through React Server Components, and more intuitive routing.
+*   **Language:** **TypeScript** - A superset of JavaScript that adds static typing. This helps catch errors during development, improves code quality, and makes the codebase easier to understand and maintain.
+*   **UI Components:** **ShadCN UI** - A collection of beautifully designed, accessible, and reusable UI components built on top of Radix UI and Tailwind CSS. This allows for rapid development of a consistent and professional user interface.
+*   **Styling:** **Tailwind CSS** - A utility-first CSS framework that provides low-level utility classes to build custom designs directly in the markup, without writing traditional CSS.
+*   **AI Functionality:** **Genkit** - An open-source framework for building AI-powered applications. It is used here for the AI Chatbot and other potential AI features.
+
+### 2.2. Website Structure: Files and Pages
+
+The website is built using the Next.js App Router. Here is a breakdown of the key directories and pages and how they connect.
+
+#### 2.2.1. User-Facing Pages (`src/app/`)
+
+These are the pages that a typical visitor or customer interacts with.
+
+*   **/ (Homepage):** `src/app/page.tsx` - The main landing page. It showcases featured dishes, meal plans, how it works, testimonials, and a blog section. It dynamically pulls data from `src/lib/data.ts` and settings from `src/hooks/use-app-settings.tsx`.
+*   **/menu:** `src/app/menu/page.tsx` - Displays all available menu items, categorized and searchable.
+*   **/plans:** `src/app/plans/page.tsx` - Shows all available subscription plans. It has a toggle for 'Prepaid' and 'Postpaid' plans and includes a card to navigate to the custom plan builder.
+*   **/plans/custom:** `src/app/plans/custom/page.tsx` - A multi-step interface for users to build their own meal plan by selecting a date range and choosing specific meals for each day.
+*   **/plans/postpaid-signup:** `src/app/plans/postpaid-signup/page.tsx` - A multi-step form for users to apply for a postpaid plan, which requires document submission.
+*   **/about:** `src/app/about/page.tsx` - Provides information about the company, its mission, and the team.
+*   **/contact:** `src/app/contact/page.tsx` - A contact form and displays contact information (email, phone, address) dynamically from the app settings.
+*   **/blog:** `src/app/blog/page.tsx` - Lists all published blog posts.
+*   **/blog/[id]:** `src/app/blog/[id]/page.tsx` - Displays a single, detailed blog post.
+*   **/profile:** `src/app/profile/page.tsx` - The user's personal dashboard to manage their profile, view order history, check subscription status, and change settings.
+*   **/login, /signup, /forgot-password:** Authentication pages for users.
+*   **/terms, /privacy, /refund:** Static pages for legal information.
+
+#### 2.2.2. Admin Panel Pages (`src/app/admin/`)
+
+All admin pages are protected and require a user to be logged in.
+
+*   **/admin (Dashboard):** `src/app/admin/page.tsx` - The main admin dashboard, showing KPIs like revenue, subscriptions, and active users.
+*   **/admin/orders:** `src/app/admin/orders/page.tsx` - View and manage all customer orders.
+*   **/admin/users:** `src/app/admin/users/page.tsx` - Manage all registered users, their status, and details.
+*   **/admin/applications:** `src/app/admin/applications/page.tsx` - Review and manage applications for postpaid plans.
+*   **/admin/menu:** `src/app/admin/menu/page.tsx` - Create, edit, and delete menu items.
+*   **/admin/plans:** `src/app/admin/plans/page.tsx` - Create, edit, and delete meal plans, including setting up daily meal schedules.
+*   **/admin/content:** `src/app/admin/content/page.tsx` - Manage homepage content like hero slides and testimonials.
+*   **/admin/blog:** `src/app/admin/blog/page.tsx` - Write, edit, and publish blog posts.
+*   **/admin/reviews:** `src/app/admin/reviews/page.tsx` - Approve or reject customer reviews.
+*   **/admin/analytics:** `src/app/admin/analytics/page.tsx` - View detailed analytics about site traffic, revenue, and user behavior.
+*   **/admin/seo:** `src/app/admin/seo/page.tsx` - A powerful tool to manage the website's search engine optimization.
+*   **/admin/settings:** `src/app/admin/settings/page.tsx` - Configure site-wide settings, including contact information, social media links, and feature toggles.
+
+### 2.3. Data and State Management
+
+*   **Demo Data (`src/lib/data.ts`):** Currently, the website runs on mock data stored in this file. This includes all menu items, plans, users, orders, etc. For a real application, this data would be moved to a database.
+*   **React Hooks and Context API (`src/hooks/`):** Application-wide state, such as user authentication (`use-auth.tsx`), shopping cart (`use-cart.tsx`), and global settings (`use-app-settings.tsx`), is managed using React's Context API. This allows different components to share and access state without passing props down manually.
+
+---
+
+## 3. How to Turn This Into a Real Website
+
+This prototype is built on a solid foundation, but to make it a fully functional, production-ready website, several steps are required to connect the frontend to a real backend and database.
+
+### 3.1. Frontend vs. Backend
+
+*   **Frontend:** This is what you see and interact with in the browser. It's built with Next.js and React. Currently, it's a complete, interactive user interface.
+*   **Backend:** This is the "server-side" of the application that the user doesn't see. It's responsible for storing data securely (like user info, orders, and products), processing payments, and handling business logic.
+
+Currently, this project **does not have a real backend**. All data is mock data stored in the frontend code. The next steps involve building this backend.
+
+### 3.2. Steps to Go Live
+
+1.  **Set Up a Database:**
+    *   The mock data in `src/lib/data.ts` needs to be migrated to a database. A good choice would be a cloud-based database like **Firebase Firestore**, **Supabase**, or **PostgreSQL**.
+    *   You will need to create tables (or collections in Firestore) for `users`, `products` (menu items), `plans`, `orders`, `reviews`, etc.
+
+2.  **Build API Endpoints:**
+    *   You need to create a way for your frontend to communicate with the database. This is done by building an API (Application Programming Interface).
+    *   With Next.js, you can create API routes directly inside the `src/app/api/` directory. For example, you could create:
+        *   `src/app/api/menu/route.ts`: To fetch all menu items from the database.
+        *   `src/app/api/orders/route.ts`: To create a new order in the database.
+    *   These API endpoints will contain the server-side logic to read from and write to your database.
+
+3.  **Connect Frontend to the API:**
+    *   Modify the frontend pages to fetch data from your new API endpoints instead of the mock `data.ts` file. For example, in `src/app/menu/page.tsx`, you would replace the local import with a `fetch` call to `/api/menu`.
+    *   All form submissions (like creating a new plan in the admin panel) would be modified to send a `POST` request to the appropriate API endpoint.
+
+4.  **Implement Real Authentication:**
+    *   The current login system is a simulation. You need to integrate a real authentication service like **Firebase Authentication** or **Auth.js (Next-Auth)**.
+    *   This service will handle user registration, login, password resets, and secure session management. It will also allow you to protect your admin pages and API routes.
+
+5.  **Integrate a Payment Gateway:**
+    *   To process real payments for subscriptions and orders, you need to integrate a payment provider like **Stripe** or **PayPal**.
+    *   This involves creating API endpoints to handle payment processing and updating order statuses in your database.
+
+6.  **Deployment:**
+    *   Once the backend is connected, you can deploy your full-stack application to a hosting platform like **Vercel** (ideal for Next.js) or **Firebase App Hosting**.
+
+---
+
+## 4. How to Use Admin Panel Features (Detailed Guide)
+
+The admin panel is your central command center for managing the entire website. Here’s how to use each section.
+
+### 4.1. Managing Plans (`Admin -> Plans`)
+
+*   **To Create a New Plan:**
+    1.  Click the "Create New Plan" button. A form will appear at the top.
+    2.  Fill in the plan details: Name, Price, Duration, Start Delay, and Delivery Schedule.
+    3.  Open the "Daily Meal Schedule" accordion. For each of the 7 days, you can enter names for Breakfast, Lunch, and/or Dinner. You can add 1, 2, or 3 meals per day; unused slots can be left blank.
+    4.  Click "Save Plan". The new plan will appear in the table.
+*   **To Edit a Plan:**
+    1.  Find the plan you want to modify in the table.
+    2.  Click the "Edit" button next to it. A form will appear below that row.
+    3.  Change any details, including the daily meal schedule.
+    4.  Click "Save Plan" to update, or "Cancel" to discard changes.
+*   **To Delete a Plan:**
+    1.  Click the "Delete" button next to any plan.
+    2.  The plan will be immediately removed from the list. (In a real app, a confirmation step would be added).
+
+### 4.2. Managing Website Settings (`Admin -> Settings`)
+
+This page allows you to change global website information without touching any code.
+
+*   **General Settings:** Enable or disable key features like direct ordering or the "Build Your Own" plan feature.
+*   **Custom Plan Settings:** Set the rules for the custom plan builder, such as the minimum required duration and tiered discounts (e.g., "10% off on orders over €200").
+*   **Contact & Socials:**
+    1.  To change the contact email, phone, or address, simply type the new information into the respective fields.
+    2.  To update a social media link, change the URL in its input field. Use the switch next to it to show or hide it on the website's footer.
+    3.  Click "Save Contact Settings" to apply the changes, which will automatically update the website footer and the Contact Us page.
+
+### 4.3. SEO Management (In-depth)
+
+The SEO Management page (`Admin -> SEO`) is a central hub for optimizing your website for search engines like Google.
+
+**How it Works:**
+This page is designed to give you granular control over how your site appears in search results. The changes you make here are intended to be read by the application and dynamically injected into your page headers as meta tags, and to generate important files like `sitemap.xml`.
+
+**Using the SEO Features:**
+
+**Tab 1: Page Metadata**
+*   **Purpose:** To customize the SEO title, meta description, and keywords for each individual page. This is crucial for making your search results compelling.
+*   **How to Use:**
+    1.  Find the page you want to edit in the table. You can use the search bar to filter.
+    2.  Click the "Edit" button for that row.
+    3.  **SEO Title:** Write a concise and engaging title (under 60 characters is best). This is what users see first in Google.
+    4.  **Meta Description:** Write a compelling summary (under 160 characters) of the page's content. This encourages users to click.
+    5.  **Keywords:** Add a few comma-separated keywords relevant to the page's content.
+    6.  **Google Preview:** Click the "Preview" button to see a simulation of how your page will look in a Google search result. This helps you refine your title and description.
+    7.  Click "Save".
+
+**Tab 2: Global Settings**
+*   **Purpose:** To set default SEO values that will be used if a specific page doesn't have its own metadata. It also controls how your site looks when shared on social media.
+*   **How to Use:**
+    1.  **Title Template:** Set a template for your titles. `%s` is a placeholder for the individual page title. For example, `My Page | Dinner O'Clock`.
+    2.  **Default Meta Description:** Write a general description for your site.
+    3.  **Global Keywords:** Add keywords that apply to your entire business.
+    4.  **Default OG Image:** Upload a default image (1200x630px is recommended). This image will be shown when your website link is shared on platforms like Facebook, Twitter, or LinkedIn.
+
+**Tab 3: Tools**
+*   **Purpose:** To generate and manage essential SEO files.
+*   **How to Use:**
+    1.  **Sitemap:** Click "Generate Sitemap". This creates a `sitemap.xml` file. A sitemap lists all your site's pages, helping search engines find and index them efficiently. You should submit this file to Google Search Console.
+    2.  **Robots.txt:** This text file tells search engine crawlers which pages or files they can or cannot request from your site. Use it to block access to private areas like `/admin` to prevent them from appearing in search results. You can edit the content directly and save it.
+
+**Tab 4: Advanced**
+*   **Purpose:** For more technical SEO enhancements.
+*   **How to Use:**
+    1.  **Schema Markup (JSON-LD):** This is structured data that helps search engines understand your content in great detail. For a restaurant, you can define your business name, address, phone number, URL, and even menu items. This can lead to "rich snippets" in search results (like ratings or opening hours). The editor allows you to write or paste JSON-LD code. You can validate it before saving.
+    2.  **URL Redirects (301):** If you delete a page or change its URL, you'll have broken links. Use this tool to permanently redirect traffic from an old URL to a new one. This preserves your SEO "juice" and prevents users from seeing "404 Not Found" errors. Simply add the old path and the new path you want it to point to.
+
+**How to Optimize:**
+1.  **Keyword Research:** Identify keywords your target audience is searching for.
+2.  **On-Page SEO:** Use the "Page Metadata" tab to include your primary keyword in the SEO Title and Description for each page.
+3.  **Compelling Copy:** Write titles and descriptions that are not only keyword-rich but also entice users to click.
+4.  **Regularly Update:** As you add new blog posts or menu items, generate a new sitemap.
+5.  **Technical Health:** Use the redirect tool to fix broken links and ensure your Schema markup is valid.
+
+---
+
+This manual should serve as a complete guide to understanding and managing your Dinner O'Clock website. If you have further questions, please refer to the source code comments or consult a web developer.
